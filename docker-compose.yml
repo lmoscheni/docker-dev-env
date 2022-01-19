@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  mongo-container:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root-dev
+    ports:
+      - "27017:27017"
+    command: mongod
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
